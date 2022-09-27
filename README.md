@@ -32,7 +32,7 @@ func TestDemo(t *testing.T) {
 }
 ```
 
-## Development your env runner
+## Develop your env runner
 
 You just need to implement the Runner interface.
 

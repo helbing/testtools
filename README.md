@@ -13,7 +13,7 @@ The package provides some test tools in Golang programming.
   - [ ] GCP
   - [ ] AWS
   - [ ] Azure
-  - [ ] Aliyun
+  - [ ] Alibaba Cloud
 
 ## Usage
 

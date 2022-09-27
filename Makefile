@@ -39,3 +39,4 @@ modtidy:
 clean:
 	@rm -rf $(shell find $(OUT_DIR)/ ! -name '.gitignore')
 	@rm -rf $(shell find . -name *.out)
+	@go clean -testcache

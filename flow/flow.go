@@ -65,7 +65,7 @@ func (c *Client) Run(t *testing.T) {
 
 // runE is run all testcases that will return err.
 func (c *Client) runE(t *testing.T) (err error) {
-	if err = c.runners.Install(t); err != nil {
+	if err = c.runners.Up(t); err != nil {
 		return err
 	}
 
@@ -75,5 +75,5 @@ func (c *Client) runE(t *testing.T) (err error) {
 		c.teardownFn(t, testcase.name)
 	}
 
-	return c.runners.Uninstall(t)
+	return c.runners.Down(t)
 }

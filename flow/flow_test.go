@@ -66,28 +66,28 @@ func TestClient_runE(t *testing.T) {
 		assert.Nil(t, err)
 	})
 
-	t.Run("Runner install error", func(t *testing.T) {
+	t.Run("Runner up error", func(t *testing.T) {
 		ctrl := gomock.NewController(t)
 		defer ctrl.Finish()
 
-		mockErr := errors.New("runner install error")
+		mockErr := errors.New("runner error")
 
 		mock := mock.NewMockRunner(ctrl)
-		mock.EXPECT().Install(gomock.Any()).Return(mockErr)
+		mock.EXPECT().Up(gomock.Any()).Return(mockErr)
 
 		err := New(mock).runE(t)
 		assert.Equal(t, mockErr, err)
 	})
 
-	t.Run("Runner uninstall error", func(t *testing.T) {
+	t.Run("Runner down error", func(t *testing.T) {
 		ctrl := gomock.NewController(t)
 		defer ctrl.Finish()
 
-		mockErr := errors.New("runner uninstall error")
+		mockErr := errors.New("runner error")
 
 		mock := mock.NewMockRunner(ctrl)
-		mock.EXPECT().Install(gomock.Any()).Return(nil)
-		mock.EXPECT().Uninstall(gomock.Any()).Return(mockErr)
+		mock.EXPECT().Up(gomock.Any()).Return(nil)
+		mock.EXPECT().Down(gomock.Any()).Return(mockErr)
 
 		err := New(mock).runE(t)
 		assert.Equal(t, mockErr, err)
@@ -103,8 +103,8 @@ func TestClient_runE(t *testing.T) {
 		sum := 5
 
 		mock := mock.NewMockRunner(ctrl)
-		mock.EXPECT().Install(gomock.Any()).Return(nil)
-		mock.EXPECT().Uninstall(gomock.Any()).Return(nil)
+		mock.EXPECT().Up(gomock.Any()).Return(nil)
+		mock.EXPECT().Down(gomock.Any()).Return(nil)
 
 		err := New(mock).
 			Setup(func(t *testing.T, name string) {

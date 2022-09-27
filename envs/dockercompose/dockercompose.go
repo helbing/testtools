@@ -25,7 +25,7 @@ func New(filename string, opts ...Option) *Runner {
 	}
 }
 
-func (r *Runner) Install(tb testing.TB) error {
+func (r *Runner) Up(tb testing.TB) error {
 	options := &docker.Options{
 		WorkingDir: r.config.workingDir,
 		EnvVars:    r.config.envVas,
@@ -41,7 +41,7 @@ func (r *Runner) Install(tb testing.TB) error {
 	return err
 }
 
-func (r *Runner) Uninstall(tb testing.TB) error {
+func (r *Runner) Down(tb testing.TB) error {
 	options := &docker.Options{
 		WorkingDir: r.config.workingDir,
 		EnvVars:    r.config.envVas,

@@ -8,11 +8,11 @@ import (
 
 // Runner is to setup the environment required for the test.
 type Runner interface {
-	// Install runner.
-	Install(tb testing.TB) error
+	// Up runner.
+	Up(tb testing.TB) error
 
-	// Uninstall runner.
-	Uninstall(tb testing.TB) error
+	// Down runner.
+	Down(tb testing.TB) error
 }
 
 // Runners is array of Runner.
@@ -32,20 +32,20 @@ func (rs Runners) Add(runners ...Runner) Runners {
 	return rs
 }
 
-// Install all runners.
-func (rs Runners) Install(tb testing.TB) error {
+// Up all runners.
+func (rs Runners) Up(tb testing.TB) error {
 	for _, runner := range rs {
-		if err := runner.Install(tb); err != nil {
+		if err := runner.Up(tb); err != nil {
 			return err
 		}
 	}
 	return nil
 }
 
-// Uninstall all runners.
-func (rs Runners) Uninstall(tb testing.TB) error {
+// Down all runners.
+func (rs Runners) Down(tb testing.TB) error {
 	for _, runner := range rs {
-		if err := runner.Uninstall(tb); err != nil {
+		if err := runner.Down(tb); err != nil {
 			return err
 		}
 	}

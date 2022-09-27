@@ -15,8 +15,8 @@ func TestMock(t *testing.T) {
 	defer ctrl.Finish()
 
 	runner := mock.NewMockRunner(ctrl)
-	runner.EXPECT().Install(gomock.Any()).Return(nil)
-	runner.EXPECT().Uninstall(gomock.Any()).Return(nil)
+	runner.EXPECT().Up(gomock.Any()).Return(nil)
+	runner.EXPECT().Down(gomock.Any()).Return(nil)
 
 	flow.New(runner).
 		Case("test mock success", func(t *testing.T) {

@@ -29,54 +29,54 @@ func TestRunners_Add(t *testing.T) {
 	})
 }
 
-func TestRunners_Install(t *testing.T) {
-	t.Run("Install failed", func(t *testing.T) {
+func TestRunners_Up(t *testing.T) {
+	t.Run("Up failed", func(t *testing.T) {
 		ctrl := gomock.NewController(t)
 		defer ctrl.Finish()
 
-		mockErr := errors.New("runner install error")
+		mockErr := errors.New("runner error")
 
 		mock := mock.NewMockRunner(ctrl)
-		mock.EXPECT().Install(gomock.Any()).Return(mockErr)
+		mock.EXPECT().Up(gomock.Any()).Return(mockErr)
 
-		err := New().Add(mock).Install(t)
+		err := New().Add(mock).Up(t)
 		assert.Equal(t, mockErr, err)
 	})
 
-	t.Run("Install success", func(t *testing.T) {
+	t.Run("Up success", func(t *testing.T) {
 		ctrl := gomock.NewController(t)
 		defer ctrl.Finish()
 
 		mock := mock.NewMockRunner(ctrl)
-		mock.EXPECT().Install(gomock.Any()).Return(nil)
+		mock.EXPECT().Up(gomock.Any()).Return(nil)
 
-		err := New().Add(mock).Install(t)
+		err := New().Add(mock).Up(t)
 		assert.Nil(t, err)
 	})
 }
 
-func TestRunners_Uninstall(t *testing.T) {
-	t.Run("Uninstall failed", func(t *testing.T) {
+func TestRunners_Down(t *testing.T) {
+	t.Run("Down failed", func(t *testing.T) {
 		ctrl := gomock.NewController(t)
 		defer ctrl.Finish()
 
-		mockErr := errors.New("runner uninstall error")
+		mockErr := errors.New("runner error")
 
 		mock := mock.NewMockRunner(ctrl)
-		mock.EXPECT().Uninstall(gomock.Any()).Return(mockErr)
+		mock.EXPECT().Down(gomock.Any()).Return(mockErr)
 
-		err := New().Add(mock).Uninstall(t)
+		err := New().Add(mock).Down(t)
 		assert.Equal(t, mockErr, err)
 	})
 
-	t.Run("Uninstall success", func(t *testing.T) {
+	t.Run("Down success", func(t *testing.T) {
 		ctrl := gomock.NewController(t)
 		defer ctrl.Finish()
 
 		mock := mock.NewMockRunner(ctrl)
-		mock.EXPECT().Uninstall(gomock.Any()).Return(nil)
+		mock.EXPECT().Down(gomock.Any()).Return(nil)
 
-		err := New().Add(mock).Uninstall(t)
+		err := New().Add(mock).Down(t)
 		assert.Nil(t, err)
 	})
 }

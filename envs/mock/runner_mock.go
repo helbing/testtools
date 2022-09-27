@@ -34,30 +34,30 @@ func (m *MockRunner) EXPECT() *MockRunnerMockRecorder {
 	return m.recorder
 }
 
-// Install mocks base method.
-func (m *MockRunner) Install(tb testing.TB) error {
+// Down mocks base method.
+func (m *MockRunner) Down(tb testing.TB) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Install", tb)
+	ret := m.ctrl.Call(m, "Down", tb)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
-// Install indicates an expected call of Install.
-func (mr *MockRunnerMockRecorder) Install(tb interface{}) *gomock.Call {
+// Down indicates an expected call of Down.
+func (mr *MockRunnerMockRecorder) Down(tb interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Install", reflect.TypeOf((*MockRunner)(nil).Install), tb)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Down", reflect.TypeOf((*MockRunner)(nil).Down), tb)
 }
 
-// Uninstall mocks base method.
-func (m *MockRunner) Uninstall(tb testing.TB) error {
+// Up mocks base method.
+func (m *MockRunner) Up(tb testing.TB) error {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Uninstall", tb)
+	ret := m.ctrl.Call(m, "Up", tb)
 	ret0, _ := ret[0].(error)
 	return ret0
 }
 
-// Uninstall indicates an expected call of Uninstall.
-func (mr *MockRunnerMockRecorder) Uninstall(tb interface{}) *gomock.Call {
+// Up indicates an expected call of Up.
+func (mr *MockRunnerMockRecorder) Up(tb interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Uninstall", reflect.TypeOf((*MockRunner)(nil).Uninstall), tb)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Up", reflect.TypeOf((*MockRunner)(nil).Up), tb)
 }

@@ -17,7 +17,7 @@ test: generate
 
 .PHONY: cover
 cover:
-	go test -covermode=count -coverprofile=coverage.out -run="^Test" ./...
+	go test -race -covermode=count -coverprofile=coverage.out -run="^Test" ./...
 
 .PHONY: cover.html
 cover.html: cover

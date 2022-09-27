@@ -6,7 +6,7 @@
 
 The package provides some test tools in Golang programming.
 
-- flow: a tool to help you autoload env runners and run test-cases.
+- flow: a tool to help you autoload env runners and run test cases.
 - envs: the set of any envirments you want up & down when testing.
   - [x] Docker-Compose
   - [ ] GCP

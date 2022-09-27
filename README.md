@@ -14,7 +14,7 @@ The package provides some test tools in Golang programming.
   - [ ] Azure
   - [ ] Aliyun
 
-## Examples
+## Usage
 
 ```go
 func TestDemo(t *testing.T) {
@@ -32,7 +32,7 @@ func TestDemo(t *testing.T) {
 }
 ```
 
-## Development new env runner
+## Development your env runner
 
 You just need to implement the Runner interface.
 

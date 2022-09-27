@@ -6,7 +6,7 @@ import (
 
 //go:generate mockgen -source=runner.go -destination=./mock/runner_mock.go -package=mock
 
-// Runner is to setup the environment required for the test.
+// Runner is to setup the environment required for testing.
 type Runner interface {
 	// Up runner.
 	Up(tb testing.TB) error

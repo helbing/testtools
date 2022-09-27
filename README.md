@@ -39,11 +39,11 @@ You just need to implement the Runner interface.
 ```go
 // Runner is to setup the environment required for testing.
 type Runner interface {
-	// Up runner.
-	Up(tb testing.TB) error
+    // Up runner.
+    Up(tb testing.TB) error
 
-	// Down runner.
-	Down(tb testing.TB) error
+    // Down runner.
+    Down(tb testing.TB) error
 }
 ```
 

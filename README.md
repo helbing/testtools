@@ -22,7 +22,10 @@ func TestDemo(t *testing.T) {
     runner := dockercompose.New("./docker-compose.yml")
     // Run testcases
     flow.New(runner).
-        Case("testcase", func(t *testing.T) {
+        Case("testcase1", func(t *testing.T) {
+            // TODO
+        }).
+        Case("testcase2", func(t *testing.T) {
             // TODO
         }).
         Run(t)

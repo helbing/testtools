@@ -6,23 +6,31 @@ import (
 
 //go:generate mockgen -source=runner.go -destination=./mock/runner_mock.go -package=mock
 
-// Runner is to setup the environment required for testing.
+// Runner is a executor to up & down the environment required for testing.
 type Runner interface {
-	// Up runner.
+	// Up runner to setup environment.
 	Up(tb testing.TB) error
 
-	// Down runner.
+	// Down runner to teardown envirment.
 	Down(tb testing.TB) error
 }
 
-// Runners is array of Runner.
+// Runners is alias of array of Runner and support functions to operation
+// easily.
+//
+//	runners := New()
+//	runners = runners.Add(runner1, runner2)
+//	err := runners.Up(t)
+//	assert.Nil(t, err)
+//	err = runners.Down(t)
+//	assert.Nil(t, err)
 type Runners []Runner
 
 func New() Runners {
 	return make(Runners, 0, 32)
 }
 
-// Add runner.
+// Add non-nil runners.
 func (rs Runners) Add(runners ...Runner) Runners {
 	for _, runner := range runners {
 		if runner != nil {
@@ -32,7 +40,6 @@ func (rs Runners) Add(runners ...Runner) Runners {
 	return rs
 }
 
-// Up all runners.
 func (rs Runners) Up(tb testing.TB) error {
 	for _, runner := range rs {
 		if err := runner.Up(tb); err != nil {
@@ -42,7 +49,6 @@ func (rs Runners) Up(tb testing.TB) error {
 	return nil
 }
 
-// Down all runners.
 func (rs Runners) Down(tb testing.TB) error {
 	for _, runner := range rs {
 		if err := runner.Down(tb); err != nil {

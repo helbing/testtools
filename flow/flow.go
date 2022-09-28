@@ -1,3 +1,4 @@
+// Package flow is to help autoload env runners and run test cases.
 package flow
 
 import (
@@ -21,6 +22,10 @@ type Client struct {
 	teardownFn func(t *testing.T, name string)
 }
 
+// New with runners. They will be executed Up with forwarding order and Down
+// with reverse order.
+//
+//	client := New(runner1, runner2, runner3)
 func New(runners ...envs.Runner) *Client {
 	return &Client{
 		runners:    runners,
@@ -38,7 +43,7 @@ func (c *Client) Case(name string, fn func(t *testing.T)) *Client {
 	return c
 }
 
-// Setup for every case. You can determine which case is currently through
+// Setup for every case. You can determine which case is running through
 // name.
 func (c *Client) Setup(fn func(t *testing.T, name string)) *Client {
 	if fn != nil {
@@ -47,7 +52,7 @@ func (c *Client) Setup(fn func(t *testing.T, name string)) *Client {
 	return c
 }
 
-// Teardown for every case. You can determine which case is currently through
+// Teardown for every case. You can determine which case is running through
 // name.
 func (c *Client) Teardown(fn func(t *testing.T, name string)) *Client {
 	if fn != nil {

@@ -7,6 +7,7 @@ type Config struct {
 	envVas map[string]string
 }
 
+// Option of New docker-compose runner.
 type Option func(*Config)
 
 func WithWorkingDir(dir string) Option {

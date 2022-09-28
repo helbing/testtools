@@ -1,3 +1,5 @@
+// Package dockercompose is a runner to up & down environment through
+// Docker-Compose.
 package dockercompose
 
 import (
@@ -11,6 +13,9 @@ type Runner struct {
 	filename string
 }
 
+// New docker-compose runner with filename of docker-compose.yml and options.
+//
+//	runner := New("./docker-compose.yml")
 func New(filename string, opts ...Option) *Runner {
 	config := &Config{
 		envVas: make(map[string]string),

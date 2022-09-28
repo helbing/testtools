@@ -1,19 +1,15 @@
 # testtools
 
-[![](https://pkg.go.dev/badge/github.com/helbing/testtools)](https://pkg.go.dev/github.com/helbing/testtools)
+[![](https://pkg.go.dev/badge/github.com/helbing/testtools.svg)](https://pkg.go.dev/github.com/helbing/testtools)
 [![](https://goreportcard.com/badge/github.com/helbing/testtools)](https://goreportcard.com/report/github.com/helbing/testtools)
 [![](https://github.com/helbing/testtools/workflows/ci-workflows/badge.svg)](https://github.com/helbing/testtools/actions)
 [![](https://codecov.io/gh/helbing/testtools/branch/main/graph/badge.svg?token=1COJEOQ4QQ)](https://codecov.io/gh/helbing/testtools)
 
 The package provides some test tools in Golang programming.
 
-- flow: a tool to help you autoload env runners and run test cases.
+- flow: to help you autoload env runners and run test cases.
 - envs: the set of any envirments you want up & down when testing.
-  - [x] Docker-Compose
-  - [ ] GCP
-  - [ ] AWS
-  - [ ] Azure
-  - [ ] Alibaba Cloud
+  - Docker-Compose
 
 ## Usage
 

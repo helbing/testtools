@@ -43,15 +43,28 @@ func TestRunners_Up(t *testing.T) {
 		assert.Equal(t, mockErr, err)
 	})
 
-	t.Run("Up success", func(t *testing.T) {
+	t.Run("Up success with forwarding order", func(t *testing.T) {
 		ctrl := gomock.NewController(t)
 		defer ctrl.Finish()
 
-		mock := mock.NewMockRunner(ctrl)
-		mock.EXPECT().Up(gomock.Any()).Return(nil)
+		orders := []int{}
 
-		err := New().Add(mock).Up(t)
+		mocks := make([]Runner, 0, 3)
+		for i := 0; i < 3; i++ {
+			num := i
+			mock := mock.NewMockRunner(ctrl)
+			mock.EXPECT().
+				Up(gomock.Any()).
+				DoAndReturn(func(_ testing.TB) error {
+					orders = append(orders, num)
+					return nil
+				})
+			mocks = append(mocks, mock)
+		}
+
+		err := New().Add(mocks...).Up(t)
 		assert.Nil(t, err)
+		assert.Equal(t, []int{0, 1, 2}, orders)
 	})
 }
 
@@ -69,14 +82,26 @@ func TestRunners_Down(t *testing.T) {
 		assert.Equal(t, mockErr, err)
 	})
 
-	t.Run("Down success", func(t *testing.T) {
+	t.Run("Down success with reverse order", func(t *testing.T) {
 		ctrl := gomock.NewController(t)
 		defer ctrl.Finish()
 
-		mock := mock.NewMockRunner(ctrl)
-		mock.EXPECT().Down(gomock.Any()).Return(nil)
+		orders := []int{}
 
-		err := New().Add(mock).Down(t)
+		mocks := make([]Runner, 0, 3)
+		for i := 0; i < 3; i++ {
+			num := i
+			mock := mock.NewMockRunner(ctrl)
+			mock.EXPECT().
+				Down(gomock.Any()).
+				DoAndReturn(func(_ testing.TB) error {
+					orders = append(orders, num)
+					return nil
+				})
+			mocks = append(mocks, mock)
+		}
+		err := New().Add(mocks...).Down(t)
 		assert.Nil(t, err)
+		assert.Equal(t, []int{2, 1, 0}, orders)
 	})
 }

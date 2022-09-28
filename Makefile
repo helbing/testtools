@@ -13,7 +13,7 @@ endif
 
 .PHONY: test
 test: generate
-	@go test -v -cover -timeout=30m ./...
+	@go test -v -cover -timeout=30m -count=1 ./...
 
 .PHONY: cover
 cover:

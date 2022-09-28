@@ -34,12 +34,13 @@ func New() Runners {
 func (rs Runners) Add(runners ...Runner) Runners {
 	for _, runner := range runners {
 		if runner != nil {
-			rs = append(rs, runners...)
+			rs = append(rs, runner)
 		}
 	}
 	return rs
 }
 
+// Up with forwarding order.
 func (rs Runners) Up(tb testing.TB) error {
 	for _, runner := range rs {
 		if err := runner.Up(tb); err != nil {
@@ -49,9 +50,10 @@ func (rs Runners) Up(tb testing.TB) error {
 	return nil
 }
 
+// Down with reverse order.
 func (rs Runners) Down(tb testing.TB) error {
-	for _, runner := range rs {
-		if err := runner.Down(tb); err != nil {
+	for i := len(rs) - 1; i >= 0; i-- {
+		if err := rs[i].Down(tb); err != nil {
 			return err
 		}
 	}

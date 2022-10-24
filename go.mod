@@ -2,17 +2,16 @@ module github.com/helbing/testtools
 
 go 1.19
 
-
 // Mistake happened in the version, DO NOT USE.
 retract (
-    v0.1.0
-    v0.1.1
+	v0.1.1
+	v0.1.0
 )
 
 require (
 	github.com/golang/mock v1.6.0
 	github.com/gruntwork-io/terratest v0.40.22
-	github.com/stretchr/testify v1.8.0
+	github.com/stretchr/testify v1.8.1
 )
 
 require (

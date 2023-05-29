@@ -10,7 +10,7 @@ retract (
 
 require (
 	github.com/golang/mock v1.6.0
-	github.com/gruntwork-io/terratest v0.41.18
+	github.com/gruntwork-io/terratest v0.42.0
 	github.com/stretchr/testify v1.8.2
 )
 

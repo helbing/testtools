@@ -10,7 +10,7 @@ retract (
 
 require (
 	github.com/golang/mock v1.6.0
-	github.com/gruntwork-io/terratest v0.41.18
+	github.com/gruntwork-io/terratest v0.43.0
 	github.com/stretchr/testify v1.8.2
 )
 
@@ -23,7 +23,7 @@ require (
 	github.com/kr/text v0.2.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/pmezard/go-difflib v1.0.0 // indirect
-	golang.org/x/net v0.7.0 // indirect
+	golang.org/x/net v0.8.0 // indirect
 	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	gotest.tools/v3 v3.0.3 // indirect
